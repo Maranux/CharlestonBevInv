@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b9dcd5cc8f254a248f123beff30721ea" Name="Diagram1">
+        <EntityTypeShape EntityType="WebDBModel.Finished_Goods" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebDBModel.Raw_Materials" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebDBModel.Recipe" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="WebDBModel.Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Finished_GoodsRecipes" ManuallyRouted="false" />
+        <AssociationConnector Association="WebDBModel.Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Raw_MaterialsRecipes" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

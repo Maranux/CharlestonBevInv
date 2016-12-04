@@ -1,12 +1,15 @@
-﻿<Window x:Class="CBevInc.MainWindow"
+﻿<Window x:Name="mainWindow" x:Class="CBevInc.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CBevInc"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Charleston Beverages, Inc." Height="450" Width="625" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Loaded="mainWindow_Loaded" Background="#FFC6D1DE">
     <Grid>
-        
+        <Frame x:Name="MainFrame" Content="This should never show!" NavigationUIVisibility="Hidden" Margin="0,54,0,-1"/>
+        <Label Content="Charleston Beverage INC." Margin="205,1,203,0" VerticalAlignment="Top" FontFamily="Segoe UI Black" FontSize="16" Width="211"/>
+        <Label Content="Charleston Beverage Management System" Margin="199,23,143,0" VerticalAlignment="Top" FontFamily="Segoe UI Light"/>
+        <Label Content="&quot;Cost and quality leaders in the beverage services industry.&quot;" Margin="157,37,104,0" VerticalAlignment="Top" FontFamily="Segoe UI Light" FontStyle="Italic"/>
     </Grid>
 </Window>

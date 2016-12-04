@@ -1,0 +1,30 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CBevInc.Pages"
+      xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="CBevInc.Pages.RepoPage"
+      mc:Ignorable="d" d:DesignWidth="300"
+      Title="RepoPage" Height="365.953">
+
+    <Grid>
+
+        <Label Content="Reports" Margin="111,10,111,0" VerticalAlignment="Top" Height="37" FontFamily="Segoe UI Light" FontSize="20" Width="78"/>
+        <Label Content="RMID" Margin="31,97,228,0" VerticalAlignment="Top" FontSize="11" Height="25" Width="41"/>
+        <Label Content="FGID" Margin="31,59,204,0" VerticalAlignment="Top" FontSize="11" Width="65" Height="23"/>
+        <Label Content="Quantity" Margin="31,137,212,0" VerticalAlignment="Top" Height="26" Width="57"/>
+        <TextBox x:Name="fgidBox" Height="23" Margin="142,59,38,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="rmidBox" Height="23" Margin="142,99,38,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="quanBox" Height="23" Margin="142,141,38,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="leftBtn" fa:Awesome.Content="ArrowLeft" Margin="8,278,248,0" VerticalAlignment="Top" Height="44" TextElement.FontFamily="/CBevInc;component/#FontAwesome" Width="44"/>
+        <Button x:Name="rgtBtn" fa:Awesome.Content="ArrowRight" Margin="248,278,8,0" VerticalAlignment="Top" Height="44" TextElement.FontFamily="/CBevInc;component/#FontAwesome" Width="44"/>
+        <Label Content="Cost" Margin="31,176,228,0" VerticalAlignment="Top" Height="26" Width="41"/>
+        <TextBox x:Name="costBox" Height="23" Margin="142,180,38,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="leaveBtn" fa:Awesome.Content="SignOut" Margin="158,278,98,0" VerticalAlignment="Top" Height="44" TextElement.FontFamily="/CBevInc;component/#FontAwesome" Width="44" Click="leaveBtn_Click"/>
+        <Label Content="Total" Margin="31,214,228,0" VerticalAlignment="Top" Height="26" Width="41"/>
+        <TextBox x:Name="totalBox" Height="23" Margin="142,218,38,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="leaveBtn_Copy" fa:Awesome.Content="Print" Margin="99,278,157,0" VerticalAlignment="Top" Height="44" TextElement.FontFamily="/CBevInc;component/#FontAwesome" Width="44" Click="leaveBtn_Click"/>
+
+    </Grid>
+</Page>

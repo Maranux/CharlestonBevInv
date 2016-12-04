@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WebDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Finished_Goods">
+          <Key>
+            <PropertyRef Name="FGID" />
+          </Key>
+          <Property Name="FGID" Type="float" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="Price" Type="float" />
+          <Property Name="Packaging" Type="nvarchar" MaxLength="255" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Raw_Materials">
+          <Key>
+            <PropertyRef Name="RMID" />
+          </Key>
+          <Property Name="RMID" Type="float" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="Cost" Type="money" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'WebDB.dbo.Recipes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Recipes">
+          <Key>
+            <PropertyRef Name="SSMA_TimeStamp" />
+          </Key>
+          <Property Name="FGID" Type="float" />
+          <Property Name="Quantity" Type="float" />
+          <Property Name="RMID" Type="float" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <Association Name="Recipes$[C:\Users\SheaVRogers\Desktop\CharlestonBevInc_be_accdb]_Finished_GoodsRecipes">
+          <End Role="Finished_Goods" Type="Self.Finished_Goods" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Recipes" Type="Self.Recipes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Finished_Goods">
+              <PropertyRef Name="FGID" />
+            </Principal>
+            <Dependent Role="Recipes">
+              <PropertyRef Name="FGID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Recipes$[C:\Users\SheaVRogers\Desktop\CharlestonBevInc_be_accdb]_Raw_MaterialsRecipes">
+          <End Role="Raw_Materials" Type="Self.Raw_Materials" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Recipes" Type="Self.Recipes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Raw_Materials">
+              <PropertyRef Name="RMID" />
+            </Principal>
+            <Dependent Role="Recipes">
+              <PropertyRef Name="RMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WebDBModelStoreContainer">
+          <EntitySet Name="Finished_Goods" EntityType="Self.Finished_Goods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Raw_Materials" EntityType="Self.Raw_Materials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Recipes" EntityType="Self.Recipes" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Recipes].[FGID] AS [FGID], 
+    [Recipes].[Quantity] AS [Quantity], 
+    [Recipes].[RMID] AS [RMID], 
+    [Recipes].[SSMA_TimeStamp] AS [SSMA_TimeStamp]
+    FROM [dbo].[Recipes] AS [Recipes]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="Recipes$[C:\Users\SheaVRogers\Desktop\CharlestonBevInc_be_accdb]_Finished_GoodsRecipes" Association="Self.Recipes$[C:\Users\SheaVRogers\Desktop\CharlestonBevInc_be_accdb]_Finished_GoodsRecipes">
+            <End Role="Finished_Goods" EntitySet="Finished_Goods" />
+            <End Role="Recipes" EntitySet="Recipes" />
+          </AssociationSet>
+          <AssociationSet Name="Recipes$[C:\Users\SheaVRogers\Desktop\CharlestonBevInc_be_accdb]_Raw_MaterialsRecipes" Association="Self.Recipes$[C:\Users\SheaVRogers\Desktop\CharlestonBevInc_be_accdb]_Raw_MaterialsRecipes">
+            <End Role="Raw_Materials" EntitySet="Raw_Materials" />
+            <End Role="Recipes" EntitySet="Recipes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WebDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Finished_Goods">
+          <Key>
+            <PropertyRef Name="FGID" />
+          </Key>
+          <Property Name="FGID" Type="Double" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="Packaging" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Recipes" Relationship="Self.Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Finished_GoodsRecipes" FromRole="Finished_Goods" ToRole="Recipes" />
+        </EntityType>
+        <EntityType Name="Raw_Materials">
+          <Key>
+            <PropertyRef Name="RMID" />
+          </Key>
+          <Property Name="RMID" Type="Double" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Recipes" Relationship="Self.Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Raw_MaterialsRecipes" FromRole="Raw_Materials" ToRole="Recipes" />
+        </EntityType>
+        <EntityType Name="Recipe">
+          <Key>
+            <PropertyRef Name="SSMA_TimeStamp" />
+          </Key>
+          <Property Name="FGID" Type="Double" />
+          <Property Name="Quantity" Type="Double" />
+          <Property Name="RMID" Type="Double" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Finished_Goods" Relationship="Self.Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Finished_GoodsRecipes" FromRole="Recipes" ToRole="Finished_Goods" />
+          <NavigationProperty Name="Raw_Materials" Relationship="Self.Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Raw_MaterialsRecipes" FromRole="Recipes" ToRole="Raw_Materials" />
+        </EntityType>
+        <Association Name="Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Finished_GoodsRecipes">
+          <End Role="Finished_Goods" Type="Self.Finished_Goods" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Recipes" Type="Self.Recipe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Finished_Goods">
+              <PropertyRef Name="FGID" />
+            </Principal>
+            <Dependent Role="Recipes">
+              <PropertyRef Name="FGID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Raw_MaterialsRecipes">
+          <End Role="Raw_Materials" Type="Self.Raw_Materials" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Recipes" Type="Self.Recipe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Raw_Materials">
+              <PropertyRef Name="RMID" />
+            </Principal>
+            <Dependent Role="Recipes">
+              <PropertyRef Name="RMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WebDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Finished_Goods" EntityType="Self.Finished_Goods" />
+          <EntitySet Name="Raw_Materials" EntityType="Self.Raw_Materials" />
+          <EntitySet Name="Recipes" EntityType="Self.Recipe" />
+          <AssociationSet Name="Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Finished_GoodsRecipes" Association="Self.Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Finished_GoodsRecipes">
+            <End Role="Finished_Goods" EntitySet="Finished_Goods" />
+            <End Role="Recipes" EntitySet="Recipes" />
+          </AssociationSet>
+          <AssociationSet Name="Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Raw_MaterialsRecipes" Association="Self.Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Raw_MaterialsRecipes">
+            <End Role="Raw_Materials" EntitySet="Raw_Materials" />
+            <End Role="Recipes" EntitySet="Recipes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WebDBModelStoreContainer" CdmEntityContainer="WebDBEntities">
+          <EntitySetMapping Name="Finished_Goods">
+            <EntityTypeMapping TypeName="WebDBModel.Finished_Goods">
+              <MappingFragment StoreEntitySet="Finished_Goods">
+                <ScalarProperty Name="FGID" ColumnName="FGID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Packaging" ColumnName="Packaging" />
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Raw_Materials">
+            <EntityTypeMapping TypeName="WebDBModel.Raw_Materials">
+              <MappingFragment StoreEntitySet="Raw_Materials">
+                <ScalarProperty Name="RMID" ColumnName="RMID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recipes">
+            <EntityTypeMapping TypeName="WebDBModel.Recipe">
+              <MappingFragment StoreEntitySet="Recipes">
+                <ScalarProperty Name="FGID" ColumnName="FGID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="RMID" ColumnName="RMID" />
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

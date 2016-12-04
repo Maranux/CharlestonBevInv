@@ -13,5 +13,10 @@ namespace CBevInc
     /// </summary>
     public partial class App : Application
     {
+        public MainWindow window = new MainWindow();
+        void App_Startup(object sender, StartupEventArgs e)
+        {
+            window.Show();
+        }
     }
 }

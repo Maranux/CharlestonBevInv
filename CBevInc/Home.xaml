@@ -1,0 +1,23 @@
+﻿<Page x:Class="CBevInc.Home"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CBevInc"
+      mc:Ignorable="d" 
+      d:DesignHeight="400" d:DesignWidth="500"
+      Title="Home">
+
+    <Grid>
+        <Grid>
+            <Button x:Name="IngrBtn" Content="Ingredients" Background="#FF1F497D" Foreground="White" Margin="106,37,281,0" Height="61" BorderBrush="{x:Null}" VerticalAlignment="Top" Width="113" Click="IngrBtn_Click"/>
+            <Button x:Name="RepBtn" Content="Reports" Foreground="White" Background="#FF1F497D" Click="RepBtn_Click" Margin="293,37,94,0" Height="61" BorderBrush="{x:Null}" VerticalAlignment="Top" Width="113"/>
+            <Button x:Name="FinBtn" Content="Finished Goods" Margin="106,141,281,0" Foreground="White" Background="#FF1F497D" Height="61" BorderBrush="{x:Null}" VerticalAlignment="Top" Width="113" Click="FinBtn_Click"/>
+            <Button x:Name="AnaBtn" Content="Analysis" Margin="293,141,94,0" Foreground="White" Background="#FF1F497D" Height="61" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="113" Click="AnaBtn_Click"/>
+            <Button x:Name="HelpBtn" Content="Help" Margin="106,246,281,0" Foreground="White" Background="#FFABB263" Height="61" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="113" Click="HelpBtn_Click"/>
+            <Button x:Name="QuitBtn" Content="Quit" Margin="293,246,94,0" VerticalAlignment="Top" Height="61" Foreground="White" Background="#FF7D1F1F" BorderBrush="{x:Null}" Width="113" Click="QuitBtn_Click"/>
+
+        </Grid>
+
+    </Grid>
+</Page>

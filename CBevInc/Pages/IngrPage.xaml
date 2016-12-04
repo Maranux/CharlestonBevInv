@@ -1,0 +1,29 @@
+﻿<Page x:Class="CBevInc.Pages.IngrPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
+      xmlns:local="clr-namespace:CBevInc.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="400" d:DesignWidth="500"
+      Title="IngrPage">
+
+    <Grid>
+        <Label Content="Ingredients" Margin="198,18,198,0" VerticalAlignment="Top" Height="37" FontFamily="Segoe UI Light" FontSize="20" Width="104" HorizontalAlignment="Center"/>
+        <Label Content="ID" Margin="131,82,348,0" VerticalAlignment="Top" FontSize="11" Width="21" Height="25"/>
+        <Label Content="Description" Margin="131,121,304,0" VerticalAlignment="Top" FontSize="11" Width="65" Height="25"/>
+        <Label Content="Cost" Margin="131,161,335,0" VerticalAlignment="Top" Width="34" Height="26"/>
+        <TextBox x:Name="idBox" Height="23" Margin="242,83,138,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="descBox" Height="23" Margin="242,123,138,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="costBox" Height="23" Margin="242,165,138,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="leftBtn" fa:Awesome.Content="ArrowLeft" Margin="108,221,348,0" VerticalAlignment="Top" Height="44" TextElement.FontFamily="/CBevInc;component/#FontAwesome" Width="44" Click="leftBtn_Click"/>
+        <Button x:Name="rgtBtn" fa:Awesome.Content="ArrowRight" Margin="348,221,108,0" VerticalAlignment="Top" Height="44" TextElement.FontFamily="/CBevInc;component/#FontAwesome" Width="44" Click="rgtBtn_Click"/>
+        <Button x:Name="saveBtn" fa:Awesome.Content="Check" Margin="258,203,198,0" VerticalAlignment="Top" Height="44" TextElement.FontFamily="/CBevInc;component/#FontAwesome" Width="44" Click="saveBtn_Click"/>
+        <Button x:Name="newBtn" fa:Awesome.Content="Pencil" Margin="198,203,258,0" VerticalAlignment="Top" Height="44" TextElement.FontFamily="/CBevInc;component/#FontAwesome" Width="44" Click="newBtn_Click"/>
+        <Button x:Name="delBtn" fa:Awesome.Content="Trash" Margin="198,252,258,0" VerticalAlignment="Top" Height="44" TextElement.FontFamily="/CBevInc;component/#FontAwesome" Width="44" Click="delBtn_Click"/>
+        <Button x:Name="leaveBtn" fa:Awesome.Content="SignOut" Margin="258,252,198,0" VerticalAlignment="Top" Height="44" TextElement.FontFamily="/CBevInc;component/#FontAwesome" Width="44" Click="leaveBtn_Click"/>
+        <Label x:Name="errBox" Content="" Margin="108,52,108,0" VerticalAlignment="Top" Foreground="Red" Width="284" Height="26"/>
+
+    </Grid>
+</Page>
