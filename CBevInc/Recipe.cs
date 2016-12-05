@@ -17,7 +17,7 @@ namespace CBevInc
         public Nullable<double> FGID { get; set; }
         public Nullable<double> Quantity { get; set; }
         public Nullable<double> RMID { get; set; }
-        public byte[] SSMA_TimeStamp { get; set; }
+        public int ID { get; set; }
     
         public virtual Finished_Goods Finished_Goods { get; set; }
         public virtual Raw_Materials Raw_Materials { get; set; }

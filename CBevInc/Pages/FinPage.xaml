@@ -4,27 +4,51 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CBevInc.Pages"
-      xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="CBevInc.Pages.FinPage"
-      mc:Ignorable="d" d:DesignWidth="300"
-      Title="FinPage" Height="356.397">
+      xmlns:fa="http://schemas.fontawesome.io/icons/" xmlns:CBevInc="clr-namespace:CBevInc" x:Class="CBevInc.Pages.FinPage"
+      mc:Ignorable="d"
+      Title="FinPage" Height="377.799" Width="537.288">
+
+    <Page.Resources>
+        <CollectionViewSource x:Key="finished_GoodsViewSource" d:DesignSource="{d:DesignInstance {x:Type CBevInc:Finished_Goods}, CreateList=True}"/>
+    </Page.Resources>
 
     <Grid>
 
         <Label Content="Finished Goods" Margin="80,10,80,0" VerticalAlignment="Top" Height="37" FontFamily="Segoe UI Light" FontSize="20" Width="140"/>
-        <Label Content="FGID" Margin="31,58,235,0" VerticalAlignment="Top" FontSize="11" Height="25" Width="34"/>
-        <Label Content="Quantity" Margin="31,97,204,0" VerticalAlignment="Top" FontSize="11" Width="65" Height="25"/>
-        <Label Content="RMID" Margin="31,137,228,0" VerticalAlignment="Top" Height="26" Width="41"/>
-        <TextBox x:Name="fgidBox" Height="23" Margin="142,59,38,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="quanBox" Height="23" Margin="142,99,38,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="rmidBox" Height="23" Margin="142,141,38,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="leftBtn" fa:Awesome.Content="ArrowLeft" Margin="8,235,248,0" VerticalAlignment="Top" Height="44" TextElement.FontFamily="/CBevInc;component/#FontAwesome" Width="44"/>
-        <Button x:Name="rgtBtn" fa:Awesome.Content="ArrowRight" Margin="248,235,8,0" VerticalAlignment="Top" Height="44" TextElement.FontFamily="/CBevInc;component/#FontAwesome" Width="44"/>
-        <Button x:Name="saveBtn" fa:Awesome.Content="Check" Margin="158,217,98,0" VerticalAlignment="Top" Height="44" TextElement.FontFamily="/CBevInc;component/#FontAwesome" Width="44"/>
-        <Button x:Name="newBtn" fa:Awesome.Content="Pencil" Margin="98,217,158,0" VerticalAlignment="Top" Height="44" TextElement.FontFamily="/CBevInc;component/#FontAwesome" Width="44"/>
-        <Button x:Name="delBtn" fa:Awesome.Content="Trash" Margin="98,266,158,0" VerticalAlignment="Top" Height="44" TextElement.FontFamily="/CBevInc;component/#FontAwesome" Width="44"/>
-        <Button x:Name="leaveBtn" fa:Awesome.Content="SignOut" Margin="158,266,98,0" VerticalAlignment="Top" Height="44" TextElement.FontFamily="/CBevInc;component/#FontAwesome" Width="44" Click="leaveBtn_Click"/>
-        <Label Content="Packaging" Margin="31,176,204,0" VerticalAlignment="Top" Height="26" Width="65"/>
-        <TextBox x:Name="packBox" Height="23" Margin="142,180,38,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="ID" Margin="28,88,475,0" VerticalAlignment="Top" FontSize="11" Height="25" Width="34"/>
+        <Label Content="Price" Margin="28,127,444,0" VerticalAlignment="Top" FontSize="11" Width="65" Height="25"/>
+        <Label Content="Description" Margin="28,167,433,0" VerticalAlignment="Top" Height="26" Width="76"/>
+        <TextBox x:Name="fgidBox" Height="23" Margin="138,89,279,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="priceBox" Height="23" Margin="138,129,279,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="leftBtn" fa:Awesome.Content="ArrowLeft" Margin="124,282,369,0" VerticalAlignment="Top" Height="44" TextElement.FontFamily="/CBevInc;component/#FontAwesome" Width="44" Click="leftBtn_Click"/>
+        <Button x:Name="rgtBtn" fa:Awesome.Content="ArrowRight" Margin="364,282,129,0" VerticalAlignment="Top" Height="44" TextElement.FontFamily="/CBevInc;component/#FontAwesome" Width="44" Click="rgtBtn_Click"/>
+        <Button x:Name="saveBtn" fa:Awesome.Content="Check" Margin="274,264,219,0" VerticalAlignment="Top" Height="44" TextElement.FontFamily="/CBevInc;component/#FontAwesome" Width="44" Click="saveBtn_Click"/>
+        <Button x:Name="newBtn" fa:Awesome.Content="Pencil" Margin="214,264,279,0" VerticalAlignment="Top" Height="44" TextElement.FontFamily="/CBevInc;component/#FontAwesome" Width="44" Click="newBtn_Click"/>
+        <Button x:Name="delBtn" fa:Awesome.Content="Trash" Margin="214,313,279,0" VerticalAlignment="Top" Height="44" TextElement.FontFamily="/CBevInc;component/#FontAwesome" Width="44" Click="delBtn_Click"/>
+        <Button x:Name="leaveBtn" fa:Awesome.Content="SignOut" Margin="274,313,219,0" VerticalAlignment="Top" Height="44" TextElement.FontFamily="/CBevInc;component/#FontAwesome" Width="44" Click="leaveBtn_Click"/>
+        <TextBox x:Name="descBox" Height="23" Margin="138,170,279,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="errBox" Content="" Margin="128,44,129,0" VerticalAlignment="Top" Foreground="Red" Height="26" Width="280"/>
+        <Label Content="Materials&#xA;" Margin="360,59,120,0" VerticalAlignment="Top" FontSize="11" Height="25" Width="57"/>
+        <DataGrid x:Name="matGrid" Margin="274,89,35,0" VerticalAlignment="Top" Height="133" AutoGenerateColumns="False" FrozenColumnCount="3" Width="228" AreRowDetailsFrozen="True" CanUserResizeColumns="False" CanUserAddRows="False" CanUserReorderColumns="False" CanUserDeleteRows="False" CanUserSortColumns="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="40" Binding="{Binding RMID}"/>
+                <DataGridTextColumn Header="Quantity" Width="65" Binding="{Binding Quantity}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="addBtn" Content="Add" Margin="274,229,155,0" VerticalAlignment="Top" Width="108" Height="20" Click="addBtn_Click"/>
+        <Button x:Name="remBtn" Content="Remove" Margin="394,229,35,0" VerticalAlignment="Top" Width="108" Height="20"/>
+        <Label Content="Packaging" Margin="28,210,433,0" VerticalAlignment="Top" Height="26" Width="76"/>
+
+        <Grid x:Name="grid1" DataContext="{StaticResource finished_GoodsViewSource}" HorizontalAlignment="Left" Margin="140,238,0,0" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+        </Grid>
+        <TextBox x:Name="packBox" Height="23" Margin="138,211,279,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Page>

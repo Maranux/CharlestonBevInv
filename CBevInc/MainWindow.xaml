@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CBevInc"
         mc:Ignorable="d"
-        Title="Charleston Beverages, Inc." Height="450" Width="625" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Loaded="mainWindow_Loaded" Background="#FFC6D1DE">
+        Title="Charleston Beverages, Inc." Height="550" Width="625" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Loaded="mainWindow_Loaded" Background="#FFC6D1DE">
     <Grid>
         <Frame x:Name="MainFrame" Content="This should never show!" NavigationUIVisibility="Hidden" Margin="0,54,0,-1"/>
         <Label Content="Charleston Beverage INC." Margin="205,1,203,0" VerticalAlignment="Top" FontFamily="Segoe UI Black" FontSize="16" Width="211"/>

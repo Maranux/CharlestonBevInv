@@ -23,7 +23,6 @@ namespace CBevInc
         public double RMID { get; set; }
         public string Description { get; set; }
         public Nullable<decimal> Cost { get; set; }
-        public byte[] SSMA_TimeStamp { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableCollection<Recipe> Recipes { get; set; }

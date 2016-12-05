@@ -24,7 +24,6 @@ namespace CBevInc
         public string Description { get; set; }
         public Nullable<double> Price { get; set; }
         public string Packaging { get; set; }
-        public byte[] SSMA_TimeStamp { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableCollection<Recipe> Recipes { get; set; }

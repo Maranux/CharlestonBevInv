@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WebDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="WebDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Finished_Goods">
           <Key>
             <PropertyRef Name="FGID" />
@@ -13,7 +13,6 @@
           <Property Name="Description" Type="nvarchar" MaxLength="255" />
           <Property Name="Price" Type="float" />
           <Property Name="Packaging" Type="nvarchar" MaxLength="255" />
-          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="Raw_Materials">
           <Key>
@@ -22,18 +21,17 @@
           <Property Name="RMID" Type="float" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="255" />
           <Property Name="Cost" Type="money" />
-          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'WebDB.dbo.Recipes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Recipes">
           <Key>
-            <PropertyRef Name="SSMA_TimeStamp" />
+            <PropertyRef Name="ID" />
           </Key>
           <Property Name="FGID" Type="float" />
           <Property Name="Quantity" Type="float" />
           <Property Name="RMID" Type="float" />
-          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <Association Name="Recipes$[C:\Users\SheaVRogers\Desktop\CharlestonBevInc_be_accdb]_Finished_GoodsRecipes">
           <End Role="Finished_Goods" Type="Self.Finished_Goods" Multiplicity="0..1">
@@ -71,7 +69,7 @@ warning 6002: The table/view 'WebDB.dbo.Recipes' does not have a primary key def
     [Recipes].[FGID] AS [FGID], 
     [Recipes].[Quantity] AS [Quantity], 
     [Recipes].[RMID] AS [RMID], 
-    [Recipes].[SSMA_TimeStamp] AS [SSMA_TimeStamp]
+    [Recipes].[ID] AS [ID]
     FROM [dbo].[Recipes] AS [Recipes]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="Recipes$[C:\Users\SheaVRogers\Desktop\CharlestonBevInc_be_accdb]_Finished_GoodsRecipes" Association="Self.Recipes$[C:\Users\SheaVRogers\Desktop\CharlestonBevInc_be_accdb]_Finished_GoodsRecipes">
@@ -83,8 +81,7 @@ warning 6002: The table/view 'WebDB.dbo.Recipes' does not have a primary key def
             <End Role="Recipes" EntitySet="Recipes" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WebDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -96,8 +93,7 @@ warning 6002: The table/view 'WebDB.dbo.Recipes' does not have a primary key def
           <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Double" />
           <Property Name="Packaging" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="SSMA_TimeStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Recipes" Relationship="Self.Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Finished_GoodsRecipes" FromRole="Finished_Goods" ToRole="Recipes" />
+          <NavigationProperty Name="Recipes" Relationship="WebDBModel.Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Finished_GoodsRecipes" FromRole="Finished_Goods" ToRole="Recipe" />
         </EntityType>
         <EntityType Name="Raw_Materials">
           <Key>
@@ -106,62 +102,61 @@ warning 6002: The table/view 'WebDB.dbo.Recipes' does not have a primary key def
           <Property Name="RMID" Type="Double" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="SSMA_TimeStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Recipes" Relationship="Self.Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Raw_MaterialsRecipes" FromRole="Raw_Materials" ToRole="Recipes" />
+          <NavigationProperty Name="Recipes" Relationship="WebDBModel.Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Raw_MaterialsRecipes" FromRole="Raw_Materials" ToRole="Recipe" />
         </EntityType>
+        <EntityContainer Name="WebDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Finished_Goods" EntityType="Self.Finished_Goods" />
+          <EntitySet Name="Raw_Materials" EntityType="Self.Raw_Materials" />
+          <EntitySet Name="Recipes" EntityType="WebDBModel.Recipe" />
+          <AssociationSet Name="Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Finished_GoodsRecipes" Association="WebDBModel.Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Finished_GoodsRecipes">
+            <End Role="Finished_Goods" EntitySet="Finished_Goods" />
+            <End Role="Recipe" EntitySet="Recipes" />
+          </AssociationSet>
+          <AssociationSet Name="Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Raw_MaterialsRecipes" Association="WebDBModel.Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Raw_MaterialsRecipes">
+            <End Role="Raw_Materials" EntitySet="Raw_Materials" />
+            <End Role="Recipe" EntitySet="Recipes" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="Recipe">
           <Key>
-            <PropertyRef Name="SSMA_TimeStamp" />
+            <PropertyRef Name="ID" />
           </Key>
           <Property Name="FGID" Type="Double" />
           <Property Name="Quantity" Type="Double" />
           <Property Name="RMID" Type="Double" />
-          <Property Name="SSMA_TimeStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Finished_Goods" Relationship="Self.Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Finished_GoodsRecipes" FromRole="Recipes" ToRole="Finished_Goods" />
-          <NavigationProperty Name="Raw_Materials" Relationship="Self.Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Raw_MaterialsRecipes" FromRole="Recipes" ToRole="Raw_Materials" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Finished_Goods" Relationship="WebDBModel.Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Finished_GoodsRecipes" FromRole="Recipe" ToRole="Finished_Goods" />
+          <NavigationProperty Name="Raw_Materials" Relationship="WebDBModel.Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Raw_MaterialsRecipes" FromRole="Recipe" ToRole="Raw_Materials" />
         </EntityType>
         <Association Name="Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Finished_GoodsRecipes">
-          <End Role="Finished_Goods" Type="Self.Finished_Goods" Multiplicity="0..1">
+          <End Type="WebDBModel.Finished_Goods" Role="Finished_Goods" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Recipes" Type="Self.Recipe" Multiplicity="*" />
+          <End Type="WebDBModel.Recipe" Role="Recipe" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Finished_Goods">
               <PropertyRef Name="FGID" />
             </Principal>
-            <Dependent Role="Recipes">
+            <Dependent Role="Recipe">
               <PropertyRef Name="FGID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Raw_MaterialsRecipes">
-          <End Role="Raw_Materials" Type="Self.Raw_Materials" Multiplicity="0..1">
+          <End Type="WebDBModel.Raw_Materials" Role="Raw_Materials" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Recipes" Type="Self.Recipe" Multiplicity="*" />
+          <End Type="WebDBModel.Recipe" Role="Recipe" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Raw_Materials">
               <PropertyRef Name="RMID" />
             </Principal>
-            <Dependent Role="Recipes">
+            <Dependent Role="Recipe">
               <PropertyRef Name="RMID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="WebDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Finished_Goods" EntityType="Self.Finished_Goods" />
-          <EntitySet Name="Raw_Materials" EntityType="Self.Raw_Materials" />
-          <EntitySet Name="Recipes" EntityType="Self.Recipe" />
-          <AssociationSet Name="Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Finished_GoodsRecipes" Association="Self.Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Finished_GoodsRecipes">
-            <End Role="Finished_Goods" EntitySet="Finished_Goods" />
-            <End Role="Recipes" EntitySet="Recipes" />
-          </AssociationSet>
-          <AssociationSet Name="Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Raw_MaterialsRecipes" Association="Self.Recipes__C__Users_SheaVRogers_Desktop_CharlestonBevInc_be_accdb__Raw_MaterialsRecipes">
-            <End Role="Raw_Materials" EntitySet="Raw_Materials" />
-            <End Role="Recipes" EntitySet="Recipes" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -174,7 +169,6 @@ warning 6002: The table/view 'WebDB.dbo.Recipes' does not have a primary key def
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Packaging" ColumnName="Packaging" />
-                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -184,17 +178,16 @@ warning 6002: The table/view 'WebDB.dbo.Recipes' does not have a primary key def
                 <ScalarProperty Name="RMID" ColumnName="RMID" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Cost" ColumnName="Cost" />
-                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Recipes">
             <EntityTypeMapping TypeName="WebDBModel.Recipe">
               <MappingFragment StoreEntitySet="Recipes">
-                <ScalarProperty Name="FGID" ColumnName="FGID" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="RMID" ColumnName="RMID" />
-                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="FGID" ColumnName="FGID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

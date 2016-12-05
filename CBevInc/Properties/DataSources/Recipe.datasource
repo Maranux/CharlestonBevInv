@@ -6,5 +6,32 @@
     cause the file to be unrecognizable by the program.
 -->
 <GenericObjectDataSource DisplayName="Recipe" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+   <Children>
+      <GenericObjectDataSource DisplayName="Raw_Materials" Version="1.0">
+         <TypeInfo>CBevInc.Raw_Materials, CBevInc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+         <TypeUISetting>
+            <PropertyUISettings>
+               <PropertyUISetting Name="Recipe.Raw_Materials">
+                  <ControlSettings>
+                     <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                        <BindableControlInfo Name="Details" Type="Microsoft.VSDesigner.Data.DataForm.Windows.DetailView" />
+                     </ControlSetting>
+                  </ControlSettings>
+               </PropertyUISetting>
+            </PropertyUISettings>
+         </TypeUISetting>
+      </GenericObjectDataSource>
+   </Children>
    <TypeInfo>CBevInc.Recipe, CBevInc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+   <TypeUISetting>
+      <PropertyUISettings>
+         <PropertyUISetting Name="RMID">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                  <BindableControlInfo Name="[None]" Type="Microsoft.VSDesigner.Data.BindManager.NoneControlPlaceHolder" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+      </PropertyUISettings>
+   </TypeUISetting>
 </GenericObjectDataSource>

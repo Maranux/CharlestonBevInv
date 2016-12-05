@@ -107,6 +107,7 @@ namespace CBevInc.Pages
             }
             db.Raw_Materials.Add(rm);
             db.SaveChanges();
+            errBox.Content = "Item saved.";
         }
 
         private void delBtn_Click(object sender, RoutedEventArgs e)
@@ -118,6 +119,7 @@ namespace CBevInc.Pages
                 idBox.Text = 0000.ToString();
                 descBox.Text = "";
                 costBox.Text = "$0.00";
+                errBox.Content = "";
                 return;
             }
             else
@@ -125,6 +127,7 @@ namespace CBevInc.Pages
                 db.Raw_Materials.Remove(db.Raw_Materials.Find(db.Raw_Materials.ToArray().ElementAt(curPos).RMID));
                 db.SaveChanges();
                 loadData(curPos);
+                errBox.Content = "";
             }
         }
     }

@@ -1,0 +1,23 @@
+﻿<Window x:Class="CBevInc.AddMaterials"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CBevInc"
+        mc:Ignorable="d"
+        Title="AddMaterials" Height="259.269" Width="262.402"
+            ShowInTaskbar="False"
+    WindowStartupLocation="CenterOwner" 
+    FocusManager.FocusedElement="{Binding ElementName=leftMarginTextBox}" Loaded="Window_Loaded" ResizeMode="NoResize">
+    <Grid Width="256">
+        <Label Content="Select Material" Margin="83,10,83,0" VerticalAlignment="Top" Height="26" Width="88"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="116,68,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Material" HorizontalAlignment="Left" Margin="18,68,0,0" VerticalAlignment="Top" Width="61"/>
+        <Label Content="Quantity" HorizontalAlignment="Left" Margin="18,108,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="quanBox" HorizontalAlignment="Left" Height="23" Margin="116,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="subButton" Content="Submit" Margin="18,185,161,0" VerticalAlignment="Top" Width="75" Height="20" Click="subButton_Click"/>
+        <Button x:Name="cancelButton" Content="Cancel" Margin="161,185,18,0" VerticalAlignment="Top" Width="75" Height="20" Click="cancelButton_Click"/>
+        <Label x:Name="errBox" Content="" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="234"/>
+
+    </Grid>
+</Window>
